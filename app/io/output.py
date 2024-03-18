@@ -26,7 +26,7 @@ def write_text_in_file(output_data, file_name):
     :return: None. This function returns nothing.
     """
     with open(file_name, 'w') as file:
-        file.write(output_data)
+        file.write(str(output_data))
 
     print(f"Input text was succeeded written in file: {file_name}!")
     return None
@@ -45,6 +45,8 @@ def write_text_in_file_pandas(output_data, file_name):
     :return: None. This function returns nothing.
     """
     df = pd.DataFrame(output_data)
-    df.to_csv(file_name)
+
+    # Write the DataFrame to a CSV file without including the date
+    df.to_csv(file_name, index=False, date_format='')
     print(f"Input text was succeeded written in file: {file_name}!")
     return None
